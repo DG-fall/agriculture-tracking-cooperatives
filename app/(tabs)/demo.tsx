@@ -49,10 +49,10 @@ export default function DemoScreen() {
 
 const styles = StyleSheet.create({
   title: { fontSize: 22, fontWeight: '900', color: colors.primaryDark, paddingHorizontal: 16 },
-  note: { flexDirection: 'row', gap: 8, alignItems: 'center', backgroundColor: '#E6EEF5', marginHorizontal: 16, marginTop: 10, padding: 12, borderRadius: radius.md },
+  note: { flexDirection: 'row', gap: 8, alignItems: 'center', backgroundColor: colors.blueLight, marginHorizontal: 16, marginTop: 10, padding: 12, borderRadius: radius.md },
   noteTxt: { flex: 1, fontSize: 12.5, color: colors.blue, fontWeight: '600' },
   card: { flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: colors.card, borderRadius: radius.md, padding: 14, marginBottom: 10, borderWidth: 1, borderColor: colors.border },
-  iconWrap: { width: 40, height: 40, borderRadius: 12, backgroundColor: '#E6EEF5', alignItems: 'center', justifyContent: 'center' },
+  iconWrap: { width: 40, height: 40, borderRadius: 12, backgroundColor: colors.blueLight, alignItems: 'center', justifyContent: 'center' },
   name: { fontSize: 15, fontWeight: '800', color: colors.text },
   meta: { fontSize: 12, color: colors.textMuted, marginTop: 2 },
   val: { fontSize: 18, fontWeight: '900', color: colors.blue },

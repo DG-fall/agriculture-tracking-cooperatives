@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, ScrollView, ActivityIndicator, KeyboardAvoidingView, Platform, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '@/app/contexts/AuthContext';
@@ -9,6 +10,7 @@ import { colors, radius, spacing } from '@/app/lib/theme';
 type Mode = 'login' | 'create' | 'join';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const IS_WEB = Platform.OS === 'web';
+const HERO_IMG = require('../assets/images/farm-hero.png');
 
 export default function Login() {
   const { signIn, signUpCreateCoop, signUpJoinCoop } = useAuth();
@@ -49,13 +51,16 @@ export default function Login() {
                 <View style={styles.webLeftContent}>
                   <Logo />
                   <View style={styles.webSlogan}>
-                    <Text style={styles.webTitle}>Building trust from farm to the world.</Text>
+                    <Text style={styles.webTitle}>Building trust from farm to <Text style={{ color: colors.accent }}>the world.</Text></Text>
                     <Text style={styles.webSubtitle}>The agricultural traceability platform connecting African farmers to global markets with transparency.</Text>
                   </View>
-                  <View style={styles.webFeatures}>
-                    <FeatureItem icon="shield-checkmark-outline" title="End-to-end Traceability" description="Track your products from farm to final destination" />
-                    <FeatureItem icon="globe-outline" title="Global Market Access" description="Connect with verified buyers worldwide" />
-                    <FeatureItem icon="bar-chart-outline" title="Data-Driven Insights" description="Make informed decisions with real-time data" />
+                  <View style={styles.heroCard}>
+                    <Image source={HERO_IMG} style={styles.heroImage} contentFit="cover" />
+                    <View style={styles.heroOverlay}>
+                      <FeatureItem icon="shield-checkmark-outline" title="End-to-end Traceability" description="Track your products from farm to final destination" />
+                      <FeatureItem icon="globe-outline" title="Global Market Access" description="Connect with verified buyers worldwide" />
+                      <FeatureItem icon="bar-chart-outline" title="Data-Driven Insights" description="Make informed decisions with real-time data" />
+                    </View>
                   </View>
                 </View>
               </View>
@@ -68,6 +73,12 @@ export default function Login() {
               <View style={{ paddingTop: insets.top + spacing.lg }}>
                 <View style={styles.mobileHeader}>
                   <Logo />
+                </View>
+                <View style={styles.mobileHeroCard}>
+                  <Image source={HERO_IMG} style={styles.mobileHero} contentFit="cover" />
+                  <View style={styles.mobileHeroOverlay}>
+                    <Text style={styles.mobileHeroText}>Building trust from farm to <Text style={{ color: '#F2C5A8' }}>the world.</Text></Text>
+                  </View>
                 </View>
                 <LoginForm mode={mode} setMode={setMode} busy={busy} err={err} email={email} setEmail={setEmail} password={password} setPassword={setPassword} nom={nom} setNom={setNom} coopNom={coopNom} setCoopNom={setCoopNom} ville={ville} setVille={setVille} telephone={telephone} setTelephone={setTelephone} code={code} setCode={setCode} submit={submit} />
               </View>
@@ -259,8 +270,48 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
 
-  webFeatures: {
-    gap: spacing.lg,
+  heroCard: {
+    borderRadius: radius.lg,
+    overflow: 'hidden',
+    backgroundColor: colors.primaryDark,
+    shadowColor: '#0E2A1E',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.25,
+    shadowRadius: 24,
+    elevation: 8,
+  },
+  heroImage: {
+    width: '100%',
+    height: 280,
+  },
+  heroOverlay: {
+    backgroundColor: colors.primaryDark,
+    padding: spacing.lg,
+    gap: spacing.md,
+  },
+  mobileHeroCard: {
+    borderRadius: radius.lg,
+    overflow: 'hidden',
+    marginBottom: spacing.lg,
+  },
+  mobileHero: {
+    width: '100%',
+    height: 170,
+  },
+  mobileHeroOverlay: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+    backgroundColor: 'rgba(14,42,30,0.78)',
+  },
+  mobileHeroText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '900',
+    letterSpacing: -0.4,
   },
   featureItem: {
     flexDirection: 'row',
@@ -268,10 +319,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   featureIcon: {
-    width: 48,
-    height: 48,
+    width: 44,
+    height: 44,
     borderRadius: radius.full,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.accent,
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
