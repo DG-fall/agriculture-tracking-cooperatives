@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   coop: { fontSize: 19, fontWeight: '900', color: colors.text },
   muted: { fontSize: 12.5, color: colors.textMuted, marginTop: 2 },
   row2: { flexDirection: 'row', gap: 12, marginVertical: 14 },
-  box: { flex: 1, backgroundColor: '#E6F2EB', borderRadius: radius.md, padding: 14, alignItems: 'center' },
+  box: { flex: 1, backgroundColor: colors.primaryLighter, borderRadius: radius.md, padding: 14, alignItems: 'center' },
   boxNum: { fontSize: 26, fontWeight: '900', color: colors.primaryDark },
   boxLbl: { fontSize: 12.5, color: colors.textMuted, fontWeight: '600' },
   line: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8, borderTopWidth: 1, borderTopColor: colors.border },

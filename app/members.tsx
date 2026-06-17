@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   label: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 8 },
   roleOptions: { flexDirection: 'row', gap: 12, marginBottom: 16 },
   roleOption: { flex: 1, paddingVertical: 12, paddingHorizontal: 16, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border, alignItems: 'center' },
-  roleOptionActive: { backgroundColor: '#E6F2EB', borderColor: colors.primary },
+  roleOptionActive: { backgroundColor: colors.primaryLighter, borderColor: colors.primary },
   roleOptionText: { fontSize: 14, fontWeight: '700', color: colors.text },
   roleOptionTextActive: { color: colors.primary },
   saveBtn: { backgroundColor: colors.primary, borderRadius: radius.md, padding: 15, alignItems: 'center' },
