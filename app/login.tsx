@@ -8,7 +8,7 @@ import { useAuth } from '@/app/contexts/AuthContext';
 import { colors, radius, spacing } from '@/app/lib/theme';
 
 type Mode = 'login' | 'create' | 'join';
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const IS_WEB = Platform.OS === 'web';
 const HERO_IMG = require('../assets/images/farm-hero.png');
 
@@ -103,9 +103,13 @@ function Logo() {
 }
 
 function FeatureItem({ icon, title, description }: { icon: any; title: string; description: string }) {
+  const isFirst = icon === 'shield-checkmark-outline';
   return (
     <View style={styles.featureItem}>
-      <View style={styles.featureIcon}>
+      <View style={[
+        styles.featureIcon,
+        isFirst ? { backgroundColor: colors.success } : {}
+      ]}>
         <Ionicons name={icon} size={28} color="#ffffff" />
       </View>
       <View style={styles.featureText}>
@@ -204,7 +208,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   webLeftContent: {
-    maxWidth: 520,
+    maxWidth: 600,
   },
   webRight: {
     flex: 1,
@@ -279,13 +283,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 24,
     elevation: 8,
+    position: 'relative',
   },
   heroImage: {
     width: '100%',
-    height: 280,
+    height: 500,
   },
   heroOverlay: {
-    backgroundColor: colors.primaryDark,
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    backgroundColor: 'rgba(27, 67, 50, 0.85)',
+    borderRadius: radius.lg,
     padding: spacing.lg,
     gap: spacing.md,
   },
@@ -296,7 +305,7 @@ const styles = StyleSheet.create({
   },
   mobileHero: {
     width: '100%',
-    height: 170,
+    height: 250,
   },
   mobileHeroOverlay: {
     position: 'absolute',
@@ -319,8 +328,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   featureIcon: {
-    width: 44,
-    height: 44,
+    width: 56,
+    height: 56,
     borderRadius: radius.full,
     backgroundColor: colors.accent,
     alignItems: 'center',
@@ -333,12 +342,12 @@ const styles = StyleSheet.create({
   featureTitle: {
     fontSize: 17,
     fontWeight: '800',
-    color: colors.text,
+    color: '#ffffff',
     marginBottom: 4,
   },
   featureDesc: {
     fontSize: 14,
-    color: colors.textMuted,
+    color: 'rgba(255,255,255,0.8)',
     lineHeight: 20,
   },
 
