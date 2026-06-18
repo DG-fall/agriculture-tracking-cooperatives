@@ -51,15 +51,15 @@ export default function Login() {
                 <View style={styles.webLeftContent}>
                   <Logo />
                   <View style={styles.webSlogan}>
-                    <Text style={styles.webTitle}>Building trust from farm to <Text style={{ color: colors.accent }}>the world.</Text></Text>
-                    <Text style={styles.webSubtitle}>The agricultural traceability platform connecting African farmers to global markets with transparency.</Text>
+                    <Text style={styles.webTitle}>Faire confiance de la ferme <Text style={{ color: colors.accent }}>au monde.</Text></Text>
+                    <Text style={styles.webSubtitle}>La plateforme de traçabilité agricole connectant les agriculteurs africains aux marchés mondiaux avec transparence.</Text>
                   </View>
                   <View style={styles.heroCard}>
                     <Image source={HERO_IMG} style={styles.heroImage} contentFit="cover" />
                     <View style={styles.heroOverlay}>
-                      <FeatureItem icon="shield-checkmark-outline" title="End-to-end Traceability" description="Track your products from farm to final destination" />
-                      <FeatureItem icon="globe-outline" title="Global Market Access" description="Connect with verified buyers worldwide" />
-                      <FeatureItem icon="bar-chart-outline" title="Data-Driven Insights" description="Make informed decisions with real-time data" />
+                      <FeatureItem icon="shield-checkmark-outline" title="Traçabilité de bout en bout" description="Suivez vos produits de la ferme à la destination finale" />
+                      <FeatureItem icon="globe-outline" title="Accès aux marchés mondiaux" description="Connectez-vous à des acheteurs vérifiés dans le monde entier" />
+                      <FeatureItem icon="bar-chart-outline" title="Analyses basées sur les données" description="Prendre des décisions éclairées avec des données en temps réel" />
                     </View>
                   </View>
                 </View>
@@ -77,7 +77,7 @@ export default function Login() {
                 <View style={styles.mobileHeroCard}>
                   <Image source={HERO_IMG} style={styles.mobileHero} contentFit="cover" />
                   <View style={styles.mobileHeroOverlay}>
-                    <Text style={styles.mobileHeroText}>Building trust from farm to <Text style={{ color: '#F2C5A8' }}>the world.</Text></Text>
+                    <Text style={styles.mobileHeroText}>Faire confiance de la ferme <Text style={{ color: '#F2C5A8' }}>au monde.</Text></Text>
                   </View>
                 </View>
                 <LoginForm mode={mode} setMode={setMode} busy={busy} err={err} email={email} setEmail={setEmail} password={password} setPassword={setPassword} nom={nom} setNom={setNom} coopNom={coopNom} setCoopNom={setCoopNom} ville={ville} setVille={setVille} telephone={telephone} setTelephone={setTelephone} code={code} setCode={setCode} submit={submit} />
@@ -97,7 +97,7 @@ function Logo() {
         <Ionicons name="leaf" size={32} color="#ffffff" />
       </View>
       <Text style={styles.logoText}>TraceAgri</Text>
-      <Text style={styles.logoTagline}>TRACE TODAY, TRUST TOMORROW</Text>
+      <Text style={styles.logoTagline}>TRAÇEZ AUJOURD'HUI, FAITES CONFIANCE DEMAIN</Text>
     </View>
   );
 }
@@ -124,13 +124,13 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
   return (
     <View style={styles.formContainer}>
       <View style={styles.formHeader}>
-        <Text style={styles.welcomeTitle}>Welcome back</Text>
-        <Text style={styles.welcomeSubtitle}>Sign in to your account</Text>
+        <Text style={styles.welcomeTitle}>Bienvenue</Text>
+        <Text style={styles.welcomeSubtitle}>Connectez-vous à votre compte</Text>
       </View>
 
       <View style={styles.tabs}>
         <Tab label="Connexion" active={mode === 'login'} onPress={() => setMode('login')} />
-        <Tab label="Créer coop." active={mode === 'create'} onPress={() => setMode('create')} />
+        <Tab label="Créer une coop" active={mode === 'create'} onPress={() => setMode('create')} />
         <Tab label="Rejoindre" active={mode === 'join'} onPress={() => setMode('join')} />
       </View>
 
@@ -150,7 +150,7 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
         {mode !== 'login' && (
           <Field icon="call-outline" placeholder="Téléphone" value={telephone} onChangeText={setTelephone} keyboardType="phone-pad" />
         )}
-        <Field icon="mail-outline" placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+        <Field icon="mail-outline" placeholder="E-mail" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
         <Field icon="lock-closed-outline" placeholder="Mot de passe" value={password} onChangeText={setPassword} secureTextEntry />
 
         {!!err && <Text style={styles.err}>{err}</Text>}
@@ -165,10 +165,10 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
 
         <View style={styles.registerPrompt}>
           <Text style={styles.registerText}>
-            {mode === 'login' ? "Don't have an account? " : 'Already have an account? '}
+            {mode === 'login' ? "Vous n'avez pas de compte ? " : 'Vous avez déjà un compte ? '}
           </Text>
           <Pressable onPress={() => setMode(mode === 'login' ? 'create' : 'login')}>
-            <Text style={styles.registerLink}>{mode === 'login' ? 'Register' : 'Sign in'}</Text>
+            <Text style={styles.registerLink}>{mode === 'login' ? "S'inscrire" : 'Se connecter'}</Text>
           </Pressable>
         </View>
       </View>
@@ -244,17 +244,17 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   logoText: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '900',
     color: colors.text,
     letterSpacing: -0.8,
     marginBottom: 6,
   },
   logoTagline: {
-    fontSize: 12,
+    fontSize: 10,
     color: colors.textMuted,
     fontWeight: '700',
-    letterSpacing: 1.8,
+    letterSpacing: 1.2,
   },
 
   webSlogan: {
@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     left: 20,
+    right: 20,
     backgroundColor: 'rgba(27, 67, 50, 0.85)',
     borderRadius: radius.lg,
     padding: spacing.lg,
@@ -305,20 +306,20 @@ const styles = StyleSheet.create({
   },
   mobileHero: {
     width: '100%',
-    height: 250,
+    height: 200,
   },
   mobileHeroOverlay: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.sm,
     backgroundColor: 'rgba(14,42,30,0.78)',
   },
   mobileHeroText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '900',
     letterSpacing: -0.4,
   },
