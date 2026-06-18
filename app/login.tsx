@@ -51,15 +51,15 @@ export default function Login() {
                 <View style={styles.webLeftContent}>
                   <Logo />
                   <View style={styles.webSlogan}>
-                    <Text style={styles.webTitle}>Faire confiance de la ferme <Text style={{ color: colors.accent }}>au monde.</Text></Text>
-                    <Text style={styles.webSubtitle}>La plateforme de traçabilité agricole connectant les agriculteurs africains aux marchés mondiaux avec transparence.</Text>
+                    <Text style={styles.webTitle}>De la ferme <Text style={{ color: colors.accent }}>au monde entier.</Text></Text>
+                    <Text style={styles.webSubtitle}>La traçabilité qui donne confiance et ouvre les portes des marchés internationaux aux agriculteurs africains.</Text>
                   </View>
                   <View style={styles.heroCard}>
                     <Image source={HERO_IMG} style={styles.heroImage} contentFit="cover" />
                     <View style={styles.heroOverlay}>
-                      <FeatureItem icon="shield-checkmark-outline" title="Traçabilité de bout en bout" description="Suivez vos produits de la ferme à la destination finale" />
-                      <FeatureItem icon="globe-outline" title="Accès aux marchés mondiaux" description="Connectez-vous à des acheteurs vérifiés dans le monde entier" />
-                      <FeatureItem icon="bar-chart-outline" title="Analyses basées sur les données" description="Prendre des décisions éclairées avec des données en temps réel" />
+                      <FeatureItem icon="shield-checkmark-outline" title="Traçabilité complète" description="Suivez chaque étape de vos productions, de la plantation à la vente" />
+                      <FeatureItem icon="globe-outline" title="Marchés internationaux" description="Connectez-vous à des acheteurs certifiés dans le monde entier" />
+                      <FeatureItem icon="bar-chart-outline" title="Données en temps réel" description="Prendre les bonnes décisions grâce à des analyses claires et précises" />
                     </View>
                   </View>
                 </View>
@@ -77,7 +77,7 @@ export default function Login() {
                 <View style={styles.mobileHeroCard}>
                   <Image source={HERO_IMG} style={styles.mobileHero} contentFit="cover" />
                   <View style={styles.mobileHeroOverlay}>
-                    <Text style={styles.mobileHeroText}>Faire confiance de la ferme <Text style={{ color: '#F2C5A8' }}>au monde.</Text></Text>
+                    <Text style={styles.mobileHeroText}>De la ferme <Text style={{ color: '#F2C5A8' }}>au monde entier.</Text></Text>
                   </View>
                 </View>
                 <LoginForm mode={mode} setMode={setMode} busy={busy} err={err} email={email} setEmail={setEmail} password={password} setPassword={setPassword} nom={nom} setNom={setNom} coopNom={coopNom} setCoopNom={setCoopNom} ville={ville} setVille={setVille} telephone={telephone} setTelephone={setTelephone} code={code} setCode={setCode} submit={submit} />
@@ -97,7 +97,7 @@ function Logo() {
         <Ionicons name="leaf" size={32} color="#ffffff" />
       </View>
       <Text style={styles.logoText}>TraceAgri</Text>
-      <Text style={styles.logoTagline}>TRAÇEZ AUJOURD'HUI, FAITES CONFIANCE DEMAIN</Text>
+      <Text style={styles.logoTagline}>Traçabilité agricole • Confiance totale</Text>
     </View>
   );
 }
@@ -124,8 +124,8 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
   return (
     <View style={styles.formContainer}>
       <View style={styles.formHeader}>
-        <Text style={styles.welcomeTitle}>Bienvenue</Text>
-        <Text style={styles.welcomeSubtitle}>Connectez-vous à votre compte</Text>
+        <Text style={styles.welcomeTitle}>Bienvenue !</Text>
+        <Text style={styles.welcomeSubtitle}>Accédez à votre espace TraceAgri</Text>
       </View>
 
       <View style={styles.tabs}>
@@ -150,7 +150,7 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
         {mode !== 'login' && (
           <Field icon="call-outline" placeholder="Téléphone" value={telephone} onChangeText={setTelephone} keyboardType="phone-pad" />
         )}
-        <Field icon="mail-outline" placeholder="E-mail" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+        <Field icon="mail-outline" placeholder="Adresse e-mail" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
         <Field icon="lock-closed-outline" placeholder="Mot de passe" value={password} onChangeText={setPassword} secureTextEntry />
 
         {!!err && <Text style={styles.err}>{err}</Text>}
@@ -158,7 +158,7 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
         <Pressable style={({ pressed }) => [styles.btn, pressed && styles.btnPressed]} onPress={submit} disabled={busy}>
           {busy ? <ActivityIndicator color="#fff" size="small" /> : (
             <Text style={styles.btnTxt}>
-              {mode === 'login' ? 'Se connecter' : mode === 'create' ? 'Créer la coopérative' : 'Rejoindre la coopérative'}
+              {mode === 'login' ? 'Accéder à mon compte' : mode === 'create' ? 'Créer la coopérative' : 'Rejoindre la coopérative'}
             </Text>
           )}
         </Pressable>
@@ -168,7 +168,7 @@ function LoginForm({ mode, setMode, busy, err, email, setEmail, password, setPas
             {mode === 'login' ? "Vous n'avez pas de compte ? " : 'Vous avez déjà un compte ? '}
           </Text>
           <Pressable onPress={() => setMode(mode === 'login' ? 'create' : 'login')}>
-            <Text style={styles.registerLink}>{mode === 'login' ? "S'inscrire" : 'Se connecter'}</Text>
+            <Text style={styles.registerLink}>{mode === 'login' ? "Créer un compte" : 'Se connecter'}</Text>
           </Pressable>
         </View>
       </View>
